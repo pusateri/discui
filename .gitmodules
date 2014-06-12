@@ -1,0 +1,3 @@
+[submodule "hypweb/pyramid_authstack"]
+	path = hypweb/pyramid_authstack
+	url = https://github.com/wichert/pyramid_authstack.git
