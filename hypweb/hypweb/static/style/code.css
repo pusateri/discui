@@ -1,0 +1,121 @@
+div.file-content {
+    border: thin solid #cccccc;
+    margin: 0;
+    font-size: 93%;
+    overflow-x: auto;
+}
+
+div.file-content div.tagged span.lineno {
+    background: url("/static/LabelGutterFlag.png") left center no-repeat rgb(200,200,200);
+}
+
+
+.file-content span.lineno {
+    display: inline-block;
+    width: 3em;
+    margin: 0 5px 0 0;
+    background: #dddddd; 
+    padding: 0 2px;
+    border-right: thin solid #aaa;
+    font-family: Helvetica;
+    font-size: 80%;
+    line-height: 175%;
+    text-align: right;
+    -webkit-user-select: none;
+    /*
+     * Setting overflow: hidden breaks text-align and leaves gaps between
+     * the line number backgrounds.  I don't know why.  keith - 2008-10-15
+     */
+}
+
+.file-content .code {
+    white-space: pre;
+    font-family: Courier;
+}
+
+.file-content .code:target {
+    background: #ff8;
+    border-top: thin solid #dddddd;
+    border-bottom: thin solid #dddddd;
+}
+
+.file-content .diffadd {
+    background: #9F9;
+}
+
+.file-content .diffchg {
+    background: #FF9;
+}
+
+.file-content .diffins {
+    background: #F99;
+}
+
+#tipBox {
+	background: #ffffdd;
+	border: 1px solid #ace4ff;
+	font-size: 14px;
+	padding: 3px;
+	width: auto;
+}
+
+.file-content  { background: #f8f8f8; }
+.file-content .c { color: #408080; font-style: italic } /* Comment */
+.file-content .err { color: #c00000; font-style: italic } /* Error */
+.file-content .k { color: #008000; font-weight: bold } /* Keyword */
+.file-content .o { color: #666666 } /* Operator */
+.file-content .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.file-content .cp { color: #BC7A00 } /* Comment.Preproc */
+.file-content .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.file-content .cs { color: #408080; font-style: italic } /* Comment.Special */
+.file-content .gd { color: #A00000 } /* Generic.Deleted */
+.file-content .ge { font-style: italic } /* Generic.Emph */
+.file-content .gr { color: #FF0000 } /* Generic.Error */
+.file-content .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.file-content .gi { color: #00A000 } /* Generic.Inserted */
+.file-content .go { color: #808080 } /* Generic.Output */
+.file-content .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.file-content .gs { font-weight: bold } /* Generic.Strong */
+.file-content .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.file-content .gt { color: #0040D0 } /* Generic.Traceback */
+.file-content .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.file-content .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.file-content .kp { color: #008000 } /* Keyword.Pseudo */
+.file-content .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.file-content .kt { color: #B00040 } /* Keyword.Type */
+.file-content .m { color: #666666 } /* Literal.Number */
+.file-content .s { color: #BA2121 } /* Literal.String */
+.file-content .na { color: #7D9029 } /* Name.Attribute */
+.file-content .nb { color: #008000 } /* Name.Builtin */
+.file-content .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.file-content .no { color: #880000 } /* Name.Constant */
+.file-content .nd { color: #AA22FF } /* Name.Decorator */
+.file-content .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.file-content .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.file-content .nf { color: #0000FF } /* Name.Function */
+.file-content .nl { color: #A0A000 } /* Name.Label */
+.file-content .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.file-content .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.file-content .nv { color: #19177C } /* Name.Variable */
+.file-content .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.file-content .w { color: #bbbbbb } /* Text.Whitespace */
+.file-content .mf { color: #666666 } /* Literal.Number.Float */
+.file-content .mh { color: #666666 } /* Literal.Number.Hex */
+.file-content .mi { color: #666666 } /* Literal.Number.Integer */
+.file-content .mo { color: #666666 } /* Literal.Number.Oct */
+.file-content .sb { color: #BA2121 } /* Literal.String.Backtick */
+.file-content .sc { color: #BA2121 } /* Literal.String.Char */
+.file-content .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.file-content .s2 { color: #BA2121 } /* Literal.String.Double */
+.file-content .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.file-content .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.file-content .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.file-content .sx { color: #008000 } /* Literal.String.Other */
+.file-content .sr { color: #BB6688 } /* Literal.String.Regex */
+.file-content .s1 { color: #BA2121 } /* Literal.String.Single */
+.file-content .ss { color: #19177C } /* Literal.String.Symbol */
+.file-content .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.file-content .vc { color: #19177C } /* Name.Variable.Class */
+.file-content .vg { color: #19177C } /* Name.Variable.Global */
+.file-content .vi { color: #19177C } /* Name.Variable.Instance */
+.file-content .il { color: #666666 } /* Literal.Number.Integer.Long */

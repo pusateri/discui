@@ -1,0 +1,13 @@
+hypd is an implementation of a DNS Hybrid Proxy.
+hypcli is a RESTful command line interface to hypd.
+hypweb is a RESTful web interface to hypd.
+
+It is an implementation of an Internet Draft standardized in the DNS-SD Working Group of the IETF.
+
+The Internet Draft can be found here:
+
+http://tools.ietf.org/html/draft-cheshire-dnssd-hybrid-01
+
+More information about the DNS-SD Working group can be found here:
+
+http://datatracker.ietf.org/wg/dnssd/
