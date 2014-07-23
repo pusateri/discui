@@ -35,7 +35,7 @@ def main():
 
     # parse command line options
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hi:r", ["help", "release", "iteration"])
+        opts, args = getopt.getopt(sys.argv[1:], "hi:r", ["help", "iteration", "release"])
     except getopt.error, msg:
         print msg
         print "for help use --help"
@@ -72,7 +72,7 @@ def main():
         pkg_type = 'deb'
 
     depends = ['python-requests', 'python-tabulate']
-    cmd = "fpm -s dir -t %s -n %s -v %s --maintainer '%s' --vendor '%s' --url '%s' --description '%s' " \
+    cmd = "fpm -s python -t %s -n %s -v %s --maintainer '%s' --vendor '%s' --url '%s' --description '%s' " \
           % (pkg_type, pkg_name, pkg_version, maintainer, vendor, url, description)
 
     if pkg_iteration:
