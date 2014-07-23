@@ -54,7 +54,7 @@ def main():
     release = lsb_release('-r')
     arch = run('uname -m')
     pkg_type = 'rpm'
-    pkg_name = 'hyp'
+    pkg_name = 'python-hyp'
     pkg_version = '0.2'
     git_version = run('git rev-parse --verify --short HEAD').strip()
     maintainer = 'Tom Pusateri <pusateri@bangj.com>'
