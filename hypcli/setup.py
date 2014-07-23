@@ -22,7 +22,7 @@ setup(
     description = ("A RESTful cli command to interact with hypd"),
     entry_points=dict(console_scripts=['hyp=hyp:main',]),
     zip_safe=False,
-    license = "All Rights Reserved.",
+    license = "MIT",
     keywords = "cli REST hypd",
     url = "http://hypd.info",
     packages=['hyp'],
