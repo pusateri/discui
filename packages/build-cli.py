@@ -6,6 +6,7 @@ import sys
 import subprocess
 import getopt
 import os
+import datetime
 
 def run(cmd):
     try:
@@ -77,7 +78,9 @@ def main():
 
     if pkg_iteration:
         if alpha:
-            cmd = cmd + "--iteration %s.%s " % (pkg_iteration, git_version)
+	    now = datetime.datetime.utcnow()
+	    day = now.strftime("%Y%m%d")
+            cmd = cmd + "--iteration %s.%sgit%s " % (pkg_iteration, day, git_version)
         else:
             cmd = cmd + "--iteration %s " % pkg_iteration
     for depend in depends:
