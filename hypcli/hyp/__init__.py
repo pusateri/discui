@@ -12,6 +12,17 @@ import requests
 import json
 from tabulate import tabulate
 
+show_url_dict = {
+    'debug': 'debug',
+    'domains': 'domains',
+    'hosts': 'hosts',
+    'instances': 'instances',
+    'interfaces': '',
+    'services': 'services',
+    'subdomains': 'browse_domains',
+    'summary': 'summary',
+}
+_AVAILABLE_SHOW_COMMANDS = show_url_dict.keys()
 
 class HypShell(cmd.Cmd):
     intro = 'Welcome to the Hyp shell. Type help or ? to list commands.\n'
@@ -21,7 +32,7 @@ class HypShell(cmd.Cmd):
     base = 'http://%s:%d/' % (target, port)
     instance = 1
     height, width = os.popen('stty size', 'r').read().split()
-
+    
 
     def print_unknown(self, cmd, line, completions):
         if line[0] != '?':
@@ -39,6 +50,9 @@ class HypShell(cmd.Cmd):
         else:
             print('Setting %s = %s' % (args[0], args[1]))
 
+    def complete_show(self, text, line, begidx, endidx):
+        return [i for i in _AVAILABLE_SHOW_COMMANDS if i.startswith(text)]
+        
     def do_show(self, line):
         'Show command output'
 
@@ -118,16 +132,7 @@ class HypShell(cmd.Cmd):
                 rows.append([d.get('name'), d.get('value', '')])
             print(tabulate(rows, ["Name", "Value"]) + '\n')
 
-        show_url_dict = {
-            'debug': 'debug',
-            'domains': 'domains',
-            'hosts': 'hosts',
-            'instances': 'instances',
-            'interfaces': '',
-            'services': 'services',
-            'subdomains': 'browse_domains',
-            'summary': 'summary',
-        }
+
         args = line.split()
         if args[0] == 'interfaces':
             show_path = 'instances/%d/interfaces' % self.instance
