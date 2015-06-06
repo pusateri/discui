@@ -11,6 +11,7 @@ import getopt
 import requests
 import json
 from tabulate import tabulate
+from hypd_completion import complete_show_packets
 
 show_url_dict = {
     'debug': 'debug',
@@ -18,11 +19,13 @@ show_url_dict = {
     'hosts': 'hosts',
     'instances': 'instances',
     'interfaces': '',
+    'packets': 'packets',
     'services': 'services',
     'subdomains': 'browse_domains',
     'summary': 'summary',
 }
 _AVAILABLE_SHOW_COMMANDS = show_url_dict.keys()
+
 
 class HypShell(cmd.Cmd):
     intro = 'Welcome to the Hyp shell. Type help or ? to list commands.\n'
@@ -51,6 +54,11 @@ class HypShell(cmd.Cmd):
             print('Setting %s = %s' % (args[0], args[1]))
 
     def complete_show(self, text, line, begidx, endidx):
+        #print('text: ' + text, 'line: ' + line, begidx, endidx)
+        words = line.split()
+        if words[1] == 'packets':
+            return complete_show_packets(text, line, begidx, endidx)
+
         return [i for i in _AVAILABLE_SHOW_COMMANDS if i.startswith(text)]
         
     def do_show(self, line):
@@ -110,6 +118,9 @@ class HypShell(cmd.Cmd):
             print(tabulate(rows, ["Name", "IfIndex", "Family", "Prefix", "Address", "Flags", "Subdomain Name",
                                   "Reverse DNS Name", "# Cache"]) + '\n')
 
+        def print_packets(json_data, args):
+            print('print_packets')
+
         def print_services(json_data, args):
             rows = []
             for d in json_data:
@@ -142,6 +153,10 @@ class HypShell(cmd.Cmd):
             else:
                 print('Must provide ifIndex as argument.')
                 return
+        elif args[0] == 'packets':
+            #tuple(k.partition('=') for k in arg.split())
+            show_path = show_url_dict.get(args[0])
+            print(line)
         else:
             show_path = show_url_dict.get(args[0])
 
@@ -153,6 +168,7 @@ class HypShell(cmd.Cmd):
                 'hosts': print_hosts,
                 'instances': print_instances,
                 'interfaces': print_interfaces,
+                'packets': print_packets,
                 'subdomains': print_subdomains,
                 'summary': print_summary,
             }
