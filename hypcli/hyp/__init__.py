@@ -10,6 +10,8 @@ import os
 import getopt
 import requests
 import json
+import urllib
+import collections
 from tabulate import tabulate
 from hypd_completion import complete_show_packets
 
@@ -118,7 +120,8 @@ class HypShell(cmd.Cmd):
             print(tabulate(rows, ["Name", "IfIndex", "Family", "Prefix", "Address", "Flags", "Subdomain Name",
                                   "Reverse DNS Name", "# Cache"]) + '\n')
 
-        def print_packets(json_data, args):
+        def print_packets(json_data, args_dict):
+            print(urllib.urlencode(args_dict))
             print('print_packets')
 
         def print_services(json_data, args):
@@ -145,6 +148,7 @@ class HypShell(cmd.Cmd):
 
 
         args = line.split()
+        args_dict = collections.OrderedDict()
         if args[0] == 'interfaces':
             show_path = 'instances/%d/interfaces' % self.instance
         elif args[0] == 'services':
@@ -154,9 +158,14 @@ class HypShell(cmd.Cmd):
                 print('Must provide ifIndex as argument.')
                 return
         elif args[0] == 'packets':
-            #tuple(k.partition('=') for k in arg.split())
+            for k in args[1:]:
+                if '=' in k:
+                    key, value = k.split('=')
+                    if len(key) and len(value):
+                        args_dict[key] = value
+                else:
+                    print('Arguments must contain operator: %s' % k)
             show_path = show_url_dict.get(args[0])
-            print(line)
         else:
             show_path = show_url_dict.get(args[0])
 
@@ -178,7 +187,10 @@ class HypShell(cmd.Cmd):
                 if r.status_code == 200:
                     func = show_func.get(args[0])
                     if func:
-                        func(r.json(), args[1:])
+                        if len(args_dict):
+                            func(r.json(), args_dict)
+                        else:
+                            func(r.json(), args[1:])
                     else:
                         self.print_unknown('show', line, show_url_dict.keys())
                 else:
