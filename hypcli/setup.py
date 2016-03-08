@@ -19,6 +19,8 @@ setup(
     version = "0.2",
     author = "Tom Pusateri",
     author_email = "pusateri@bangj.com",
+    maintainer = "Tom Pusateri",
+    maintainer_email = "pusateri@bangj.com",
     description = ("A RESTful cli command to interact with hypd"),
     entry_points=dict(console_scripts=['hyp=hyp:main',]),
     zip_safe=False,
