@@ -9,11 +9,6 @@ from setuptools import setup, find_packages
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-requires = [
-    'requests',
-    'tabulate',
-    ]
-
 setup(
     name = "hyp",
     version = "0.3",
@@ -27,6 +22,10 @@ setup(
     license = "MIT",
     keywords = "cli REST hypd",
     url = "http://dnshyp.com",
-    packages=['hypcli'],
+    packages=['hyp'],
     long_description=read('../README'),
+    install_requires = [
+	'requests',
+	'tabulate',
+    ],
 )

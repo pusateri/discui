@@ -2,8 +2,9 @@ Source: hypcli
 Section: python
 Priority: extra
 Maintainer: Tom Pusateri <pusateri@bangj.com>
-Build-Depends: debhelper (>= 9), python, dh-virtualenv (>= 0.7)
+Build-Depends: debhelper (>= 9), python, dh-virtualenv (>= 0.6)
 Standards-Version: 3.9.5
+X-Python-Version: >= 2.6
 
 Package: hypcli
 Architecture: any
