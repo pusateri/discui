@@ -22,7 +22,7 @@ setup(
     license = "MIT",
     keywords = "cli REST hypd",
     url = "http://dnshyp.com",
-    packages=['hyp'],
+    packages=['hyp', 'hypd_completion'],
     long_description=read('../README'),
     install_requires = [
 	'requests',
