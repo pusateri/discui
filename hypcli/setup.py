@@ -16,7 +16,7 @@ requires = [
 
 setup(
     name = "hyp",
-    version = "0.2",
+    version = "0.3",
     author = "Tom Pusateri",
     author_email = "pusateri@bangj.com",
     maintainer = "Tom Pusateri",
@@ -26,7 +26,7 @@ setup(
     zip_safe=False,
     license = "MIT",
     keywords = "cli REST hypd",
-    url = "http://hypd.info",
-    packages=['hyp'],
-    long_description=read('README'),
+    url = "http://dnshyp.com",
+    packages=['hypcli'],
+    long_description=read('../README'),
 )

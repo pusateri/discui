@@ -3,13 +3,13 @@ hypui is an open source project provding Hybrid Proxy UI elements including:
 hypcli - a RESTful command line interface to hypd.
 hypweb - a RESTful web interface to hypd.
 
-hypd is an implementation of a DNS Hybrid Proxy. See http://hypd.info for info.
+hypd is an implementation of a DNS Hybrid Proxy. See http://dnshyp.com for more info.
 
 The DNS Hybrid Proxy is an implementation of an Internet Draft standardized in the DNS-SD Working Group of the IETF.
 
 The Internet Draft can be found here:
 
-http://tools.ietf.org/html/draft-cheshire-dnssd-hybrid-01
+https://tools.ietf.org/html/draft-ietf-dnssd-hybrid-03
 
 More information about the DNS-SD Working group can be found here:
 

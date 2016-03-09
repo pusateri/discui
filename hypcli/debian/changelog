@@ -1,4 +1,10 @@
-hyp (0.2) unstable; urgency=low
+hypcli (0.3) unstable; urgency=low
+
+  * bump version number for building latest package. 
+
+ -- Tom Pusateri <pusateri@shuttle>  Wed, 09 Mar 2016 14:28:43 -0500
+
+hypcli (0.2) unstable; urgency=low
 
   * 7935c64 add interface to show packets through RESTful api
 
