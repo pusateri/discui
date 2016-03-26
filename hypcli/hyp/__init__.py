@@ -23,6 +23,7 @@ show_url_dict = {
     'interfaces': '',
     'packets': 'packets',
     'services': 'services',
+    'subscriptions': 'subscribe',
     'subdomains': 'browse_domains',
     'summary': 'summary',
 }
@@ -43,7 +44,7 @@ class HypShell(cmd.Cmd):
         if line[0] != '?':
             print("%s command '%s' not recognized." % (cmd, line))
         print('Possible completions are:')
-        print('    ' + ','.join(completions))
+        print('    ' + ','.join(sorted(completions)))
 
     def do_set(self, line):
         'Set command options'
@@ -140,6 +141,14 @@ class HypShell(cmd.Cmd):
             print(tabulate(rows, ["Subdomain", "IfName", "IfIndex", "Admin Disabled", "Domain PTR", "NS Active",
                                   "Browseable Net RevAddr", "Browseable", "Last Refreshed (sec)", "Timeout (sec)"]) + '\n')
 
+        def print_subscriptions(json_data, args):
+            rows = []
+            for d in json_data:
+                rows.append([d.get('active'), d.get('IfName'), d.get('IfIndex'), d.get('source'),
+                             d.get('subscriber_name'), d.get('subscriber_addr'), d.get('type'),
+                             d.get('service')])
+            print(tabulate(rows, ["Active", "IfName", "IfIndex", "Source", "Subscriber Name", "Subscriber Address", "Type", "Service"]) + '\n')
+
         def print_summary(json_data, args):
             rows = []
             for d in json_data:
@@ -166,6 +175,11 @@ class HypShell(cmd.Cmd):
                 else:
                     print('Arguments must contain operator: %s' % k)
             show_path = show_url_dict.get(args[0])
+        elif args[0] == 'subscriptions':
+            if len(args) > 1:
+                show_path = 'subscribe/%s' % args[1]
+            else:
+                show_path = show_url_dict.get(args[0])
         else:
             show_path = show_url_dict.get(args[0])
 
@@ -179,6 +193,7 @@ class HypShell(cmd.Cmd):
                 'interfaces': print_interfaces,
                 'packets': print_packets,
                 'subdomains': print_subdomains,
+                'subscriptions': print_subscriptions,
                 'summary': print_summary,
             }
             url = self.base + show_path + '/'
